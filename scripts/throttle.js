@@ -1,5 +1,5 @@
 const fireMe = () => {
-  const inputValue = document.getElementById('typeDebounce').value;
+  const inputValue = document.getElementById('typeThrottle').value;
   console.log('event is fired with input value', inputValue);
 };
 

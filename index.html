@@ -7,9 +7,25 @@
   </head>
   <body>
     <h1>Hello there!</h1>
-    <input type="text" id="typeDebounce" onkeyup="withThrottle()" />
+    <input
+      type="text"
+      id="typeThrottle"
+      onkeyup="withThrottle()"
+      placeholder="for Throttle Testing"
+    />
+    <input
+      type="text"
+      id="typeDebounce"
+      onkeyup="withDebounce()"
+      placeholder="for Debounce Testing"
+    />
     <br />
     <a href="/me.html">My other page</a>
-    <script></script>
+    <script>
+      const input = document.querySelector('input');
+      input.addEventListener('input', () => {
+        console.log('throttle keyup...', input.value);
+      });
+    </script>
   </body>
 </html>
