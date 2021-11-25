@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <script src="scripts/debounce.js"></script>
     <script src="scripts/throttle.js"></script>
+    <script src="scripts/deepEqual.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
   </head>
   <body>
@@ -26,6 +27,51 @@
       input.addEventListener('input', () => {
         console.log('throttle keyup...', input.value);
       });
+
+      var a = { abc: '123' };
+      var b = { abc: '123', k: '123' };
+
+      console.log(areSimilar(a, b) === false); // true
+
+      a = { abc: '123', i: { j: '12' } };
+      b = { abc: '123', i: { j: '12' } };
+
+      console.log(areSimilar(a, b) === true); // true
+
+      a = { abc: '123', i: { j: '123' } };
+      b = { abc: '123', i: { j: '12' } };
+
+      console.log(areSimilar(a, b) === false); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, 4] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, 4] };
+
+      console.log(areSimilar(a, b) === true); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, 4] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 4, 3] };
+
+      console.log(areSimilar(a, b) === false); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, 4] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, {}] };
+
+      console.log(areSimilar(a, b) === false); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, 4] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, {}] };
+
+      console.log(areSimilar(a, b) === false); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+
+      console.log(areSimilar(a, b) === true); // true
+
+      a = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+      b = { abc: '123', i: { j: '12', ne: [{}] }, k: [1, 2, 3, [5, 6, {}]] };
+
+      console.log(areSimilar(a, b) === false); // true
     </script>
   </body>
 </html>
