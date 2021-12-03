@@ -99,3 +99,48 @@ a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
 b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, {}]] };
 
 console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123" };
+b = { abc: "123", k: "123" };
+
+console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123", i: { j: "12" } };
+b = { abc: "123", i: { j: "12" } };
+
+console.log(areSimilar(a, b) === true); // true
+
+a = { abc: "123", i: { j: "123" } };
+b = { abc: "123", i: { j: "12" } };
+
+console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, 4] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, 4] };
+
+console.log(areSimilar(a, b) === true); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, 4] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 4, 3] };
+
+console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, 4] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, {}] };
+
+console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, 4] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, {}] };
+
+console.log(areSimilar(a, b) === false); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+
+console.log(areSimilar(a, b) === true); // true
+
+a = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, 7]] };
+b = { abc: "123", i: { j: "12", ne: [{}] }, k: [1, 2, 3, [5, 6, {}]] };
+
+console.log(areSimilar(a, b) === false); // true

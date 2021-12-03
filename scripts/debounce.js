@@ -16,4 +16,5 @@ const debounce = (fn, delay) => {
   };
 };
 const withDebounce = debounce(getData, 400);
+console.log(withDebounce);
 // const withDebounce = getData;
